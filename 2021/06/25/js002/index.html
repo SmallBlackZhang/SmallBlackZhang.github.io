@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="JavaScript,Vue,React,Java">
+    <meta name="description" content="Zzzzzxm的个人博客，助于个人学习提升，分享学习过程">
+    <meta name="author" content="Zzzzzxm">
+    
+    <title>
+        
+            「善学善思」—— JS数据类型判断 |
+        
+        Zzzzzxm&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/SmallBlackZhang/image-hosting@master/blog-images/icon.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"zzzzzxm.com","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"https://cdn.jsdelivr.net/gh/SmallBlackZhang/image-hosting@master/blog-images/avatar.jpeg","favicon":"https://cdn.jsdelivr.net/gh/SmallBlackZhang/image-hosting@master/blog-images/icon.svg","article_img_align":"center","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"以诚挚之心，领岁月教诲，敬年少热诚，愿将来胜过往，永远热泪盈眶。"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Zzzzzxm&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">「善学善思」—— JS数据类型判断</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/SmallBlackZhang/image-hosting@master/blog-images/avatar.jpeg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Zzzzzxm</span>
+                        
+                            <span class="author-label">一个程序员</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-06-25 21:27:13
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/javascript/">javascript</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/js/">js</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.2k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="使用严格相等符号"><a href="#使用严格相等符号" class="headerlink" title="使用严格相等符号==="></a>使用严格相等符号<code>===</code></h2><p>由于 Null 类型和 Undefined 的<code>值都是唯一</code>的，我们可以使用严格相等判断<code>===</code>来对两者进行判断</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let aa = null</span><br><span class="line">let bb = undefined</span><br><span class="line">console.log(aa === null) // true</span><br><span class="line">console.log(bb === undefined) // true</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-typeof-运算符"><a href="#使用-typeof-运算符" class="headerlink" title="使用 typeof 运算符"></a>使用 <code>typeof</code> 运算符</h2><p><code>typeof</code>是一元运算符，返回值为一个字符串类型。一般用来判断变量是什么数据类型。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">typeof 10 // &#x27;number&#x27;</span><br><span class="line">typeof &quot;String&quot; // &#x27;string&#x27;</span><br><span class="line">typeof false // &#x27;boolean&#x27;</span><br><span class="line">typeof null // &#x27;object&#x27;</span><br><span class="line">typeof undefined // &#x27;undefined&#x27;</span><br><span class="line">typeof Symbol() // &#x27;symbol&#x27;</span><br><span class="line">typeof 10000n // &#x27;bigint&#x27;</span><br><span class="line">typeof function () &#123;&#125;) // &#x27;function&#x27;</span><br><span class="line">typeof []) / &#x27;object&#x27;</span><br><span class="line">typeof &#123;&#125;) / &#x27;object&#x27;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>1.对于原始数据类型，除 <code>null</code> 以外，均可以返回正确的结果。</li>
+<li>2.对于引用类型，除 <code>function</code> 以外，一律返回 <code>object</code> 类型。</li>
+<li>3.对于 <code>null</code> ，返回 <code>object</code> 类型。</li>
+<li>4.对于 <code>function</code> 返回 <code>function</code> 类型。</li>
+</ul>
+<blockquote>
+<p><code>为什么 typeof null 等于 Object?</code><br>不同的对象在底层原理的存储是用二进制表示的，在 <code>javaScript</code> 中，如果二进制的前三位都为<code>0</code> 的话，系统会判定为是 <code>Object</code> 类型。<code>null</code> 的存储二进制全是 <code>0</code>，所以系统判定 <code>typeof null</code> 为 <code>object</code> 类型。</p>
+</blockquote>
+<h2 id="使用-instanceof-关键字"><a href="#使用-instanceof-关键字" class="headerlink" title="使用 instanceof 关键字"></a>使用 <code>instanceof</code> 关键字</h2><p>既然 <code>typeof</code> 对对象类型都返回 <code>Object</code> 类型情况的局限性，我们可以使用 <code>instanceof</code>关键字来对对象类型进行判断。<code>instanceof</code>运算符用来测试一个对象在其原型链中是否存在一个构造函数的 <code>prototype</code> 属性，进而判断某个对象是不是另一个对象的<code>实例</code>。返回值的是一个布尔类型。</p>
+<p>使用： <code>A instanceof B</code>, <code>instanceof</code> 左侧 A 必须是对象, 才能找到它的<code>原型链__proto__</code>,<code>instanceof</code> 右侧 B 必须是函数, 函数才会 <code>prototype原型属性</code><br>// <code>当 A 为原始数据类型 instanceof 结果为 false </code><br>// <code>当 B 不是函数 则报错 TypeError</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#123;&#125; instanceof Object) // true</span><br><span class="line">console.log([] instanceof Array) // true</span><br><span class="line">console.log(function () &#123;&#125; instanceof Function) // true</span><br><span class="line">console.log(new Map() instanceof Map) // true</span><br><span class="line">console.log(new Set() instanceof Set) // true</span><br><span class="line">class A &#123;</span><br><span class="line">  constructor(name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let a = new A(&quot;zzzzzxm&quot;)</span><br><span class="line">console.log(A instanceof Function) // true</span><br><span class="line">console.log(a instanceof A) // true</span><br><span class="line">console.log(a instanceof Function) // false</span><br><span class="line">console.log(a instanceof Object) // true</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>那么使用A instanceof B 发生了什么?</code><br><code>a</code> 会一直沿着隐式原型链<code>__proto__</code>向上查找直到 <code>a.__proto__.__proto__ ...... === b.prototype</code> 为止，如果找到则返回 <code>true</code>，也就是 <code>a</code> 为 <code>b</code> 的一个实例。否则返回 <code>false</code>，<code>a</code> 不是 <code>b</code>的实例。</p>
+</blockquote>
+<p>简单手写一个<code>instanceof</code>实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">function myInstanceof(left, right) &#123;</span><br><span class="line">  const baseType = [</span><br><span class="line">    &quot;number&quot;,</span><br><span class="line">    &quot;boolean&quot;,</span><br><span class="line">    &quot;string&quot;,</span><br><span class="line">    &quot;symbol&quot;,</span><br><span class="line">    &quot;bigint&quot;,</span><br><span class="line">    &quot;undefined&quot;,</span><br><span class="line">  ]</span><br><span class="line">  if (left === null || baseType.includes(typeof left)) &#123;</span><br><span class="line">    return false</span><br><span class="line">  &#125;</span><br><span class="line">  if (!right.prototype) &#123;</span><br><span class="line">    throw TypeError(`Right-hand side of &#x27;instanceof&#x27; is not callable`)</span><br><span class="line">  &#125;</span><br><span class="line">  let leftProto = left.__proto__</span><br><span class="line">  let rightProto = right.prototype</span><br><span class="line">  while (true) &#123;</span><br><span class="line">    if (leftProto === null) return false</span><br><span class="line">    if (leftProto === rightProto) return true</span><br><span class="line">    leftProto = leftProto.__proto__</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(myInstanceof(&#123;&#125;, Object)) // true</span><br><span class="line">console.log(myInstanceof([], Array)) // true</span><br><span class="line">console.log(myInstanceof(function () &#123;&#125;, Function)) // true</span><br><span class="line">console.log(myInstanceof(new Map(), Map)) // true</span><br><span class="line">console.log(myInstanceof(new Set(), Set)) // true</span><br><span class="line">class A &#123;</span><br><span class="line">  constructor(name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let a = new A(&quot;zzzzzxm&quot;)</span><br><span class="line">console.log(myInstanceof(A, Function)) // true</span><br><span class="line">console.log(myInstanceof(a, A)) // true</span><br><span class="line">console.log(myInstanceof(a, Function)) // false</span><br><span class="line">console.log(myInstanceof(0, Object)) // false</span><br><span class="line">console.log(myInstanceof(null, Object)) // false</span><br></pre></td></tr></table></figure>
+
+<p>到此我们可以得到结论</p>
+<ul>
+<li>判断 <code>null</code> 使用严格相等<code>===</code></li>
+<li>判断原始数据类型（<code>null</code> 除外）使用 <code>typeof</code></li>
+<li>判断引用数据类型使用 <code>instanceof</code><br>那么有没有一种方法不用区分原始数据类型和引用数据类型就能进行判断呢？<code>Object.prototype.toString.call</code>来了</li>
+</ul>
+<h2 id="使用Object-prototype-toString-call"><a href="#使用Object-prototype-toString-call" class="headerlink" title="使用Object.prototype.toString.call"></a>使用<code>Object.prototype.toString.call</code></h2><p>在任何值上调用 <code>Object</code> 原生的 <code>toString()</code> 方法，都会返回一个 <code>[object NativeConstructorName]</code> 格式的字符串。<br>需要注意的是，但是它不能检测<code>非原生构造函数</code>的构造函数名。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">const Opt = Object.prototype.toString</span><br><span class="line">console.log(Opt.call(1)) // [object Number]</span><br><span class="line">console.log(Opt.call(&quot;string&quot;)) // [object String]</span><br><span class="line">console.log(Opt.call(false)) // [object Boolean]</span><br><span class="line">console.log(Opt.call(100n)) // [object BigInt]</span><br><span class="line">console.log(Opt.call(null)) // [object Null]</span><br><span class="line">console.log(Opt.call(undefined)) // [object Undefined]</span><br><span class="line">console.log(Opt.call(Symbol())) // [object Symbol]</span><br><span class="line">console.log(Opt.call(&#123;&#125;)) // [object Object]</span><br><span class="line">console.log(Opt.call([])) // [object Array]</span><br><span class="line">console.log(Opt.call(() =&gt; &#123;&#125;)) // [object Function]</span><br><span class="line">console.log(Opt.call(new Map())) // [object Map]</span><br><span class="line">console.log(Opt.call(new Set())) // [object Set]</span><br><span class="line">console.log(Opt.call(new Date())) // [object Date]</span><br><span class="line"></span><br><span class="line">//不能检测非原生构造函数的构造函数名</span><br><span class="line">class A &#123;</span><br><span class="line">  constructor(name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let a = new A(&quot;zzzzzxm&quot;)</span><br><span class="line"></span><br><span class="line">function B(name) &#123;</span><br><span class="line">  this.name = name</span><br><span class="line">&#125;</span><br><span class="line">let b = new B(&quot;zzzzzxm&quot;)</span><br><span class="line">console.log(Opt.call(a)) // [object Object]</span><br><span class="line">console.log(Opt.call(b)) // [object Object]</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用构造函数constructor"><a href="#使用构造函数constructor" class="headerlink" title="使用构造函数constructor"></a>使用构造函数<code>constructor</code></h2><p>当然还可以通过构造函数<code>constructor</code>进行判断</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">let bool = true</span><br><span class="line">console.log(bool.constructor === Boolean) // true</span><br><span class="line">let num = 10</span><br><span class="line">console.log(num.constructor === Number) // true</span><br><span class="line">let bigint = 12121212121212n</span><br><span class="line">console.log(bigint.constructor === BigInt) // true</span><br><span class="line">let str = &quot;zzzzzxm&quot;</span><br><span class="line">console.log(str.constructor === String) // true</span><br><span class="line">let arr = []</span><br><span class="line">console.log(arr.constructor === Array) // true</span><br><span class="line">let obj = &#123;&#125;</span><br><span class="line">console.log(obj.constructor === Object) // true</span><br><span class="line">let fun = () =&gt; &#123;&#125;</span><br><span class="line">console.log(fun.constructor === Function) // true</span><br><span class="line">let symbol = Symbol()</span><br><span class="line">console.log(symbol.constructor === Symbol) // true</span><br><span class="line">function Student(name, age) &#123;</span><br><span class="line">  this.name = name</span><br><span class="line">  this.age = age</span><br><span class="line">&#125;</span><br><span class="line">let student = new Student(&quot;zzzzzxm&quot;, 18)</span><br><span class="line">console.log(student.constructor === Student) // false</span><br><span class="line">class Person &#123;&#125;</span><br><span class="line">console.log(new Person().constructor === Person) // true</span><br></pre></td></tr></table></figure>
+
+<p><code>undefined和null没有constructor属性</code><br><code>constructor不能判断undefined和null，并且使用它是不安全的，因为constructor的指向是可以改变的</code></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>萝卜青菜各有所爱，合理选择判断数据类型的方式，<code>happy coding ~</code></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：「善学善思」—— JS数据类型判断</li>
+        <li>本文作者：Zzzzzxm</li>
+        <li>创建时间：2021-06-25 21:27:13</li>
+        <li>
+            本文链接：https://zzzzzxm.com/2021/06/25/js002/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/06/28/js003/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">「善学善思」—— JS数据类型转换</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/05/20/js001/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">「善学善思」 —— JS数据类型</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-pjax
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script data-pjax>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: 'f210a7e1b419c262d4d9',
+                    clientSecret: '1edeb47d89633403cedbfb59694a3d74502c545a',
+                    repo: 'SmallBlackZhang.github.io',
+                    owner: 'SmallBlackZhang',
+                    admin: ['SmallBlackZhang'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Zzzzzxm</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%A5%E6%A0%BC%E7%9B%B8%E7%AD%89%E7%AC%A6%E5%8F%B7"><span class="nav-text">使用严格相等符号&#x3D;&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-typeof-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">使用 typeof 运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-instanceof-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">使用 instanceof 关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Object-prototype-toString-call"><span class="nav-text">使用Object.prototype.toString.call</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0constructor"><span class="nav-text">使用构造函数constructor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-text">最后</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
